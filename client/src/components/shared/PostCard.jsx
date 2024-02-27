@@ -44,7 +44,7 @@ const PostCard = ({ post }) => {
     >
       <div className="flex-between">
         <div className="flex items-center gap-3">
-          <Link to={`/profile/${post?._id}`}>
+          <Link to={`/profile/${post?.author._id}`}>
             <img
               src={
                 post?.author?.avatar || "/assets/icons/profile-placeholder.svg"
