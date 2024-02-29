@@ -218,3 +218,29 @@ export const getSavedPosts = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+export const getSearchResults = async (req, res, next) => {
+  try {
+    const searchTerm = req.query.searchTerm;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+
+    const users = await User.find({
+      $or: [
+        { username: { $regex: searchTerm, $options: "i" } },
+        { fullName: { $regex: searchTerm, $options: "i" } },
+      ],
+    })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+
+      if(!users) {
+        return next(errorHandler(404, "User not found"));
+      }
+
+    res.status(200).json({ users,  hasMore: users.length === limit, });
+  } catch (error) {
+    next(error.message);
+  }
+};

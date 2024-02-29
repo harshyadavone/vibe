@@ -17,7 +17,6 @@ import {
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 
-
 const UpdateProfile = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -41,8 +40,6 @@ const UpdateProfile = () => {
   const filePickerRef = useRef();
 
   // Define styles based on the selected theme
-  const bgColor = theme === "light" ? "#EFEFEF" : "#1F1F22";
-  const textColor = theme === "light" ? "#1F1F22" : "#FFFFFF";
   const inputBgColor = theme === "light" ? "bg-white" : "bg-gray-800";
   const inputBorderColor =
     theme === "light" ? "border-gray-300" : "border-gray-700";

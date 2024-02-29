@@ -7,7 +7,6 @@ import RootLayout from "./_root/RootLayout";
 import Google from "./_auth/forms/Google";
 
 import {
-  Explore,
   Saved,
   AllUsers,
   CreatePost,
@@ -20,6 +19,7 @@ import PrivateRoute from "./components/shared/PrivateRoute";
 import SocialLinks from "./components/shared/SocialLinks";
 import Followers from "./components/shared/Followers";
 import Following from "./components/shared/Following";
+import SearchUser from "./_root/pages/Search";
 
 const App = () => {
   return (
@@ -34,7 +34,7 @@ const App = () => {
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
 
-          <Route path="/explore" element={<Explore />} />
+          <Route path="/search" element={<SearchUser />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/all-users" element={<AllUsers />} />
           <Route element={<PrivateRoute />}>

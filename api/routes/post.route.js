@@ -6,6 +6,7 @@ import {
   deletePost,
   getPostById,
   getSavedPosts,
+  getSearchResults,
   getposts,
   likePost,
   updatePost,
@@ -20,5 +21,6 @@ router.get("/savedposts/:id", getSavedPosts);
 router.put("/likePost/:postId", verifyToken, likePost);
 router.delete("/deletepost/:postId", verifyToken, deletePost);
 router.put("/updatepost/:postId", verifyToken, updatePost);
+router.get("/search", getSearchResults);
 
 export default router;

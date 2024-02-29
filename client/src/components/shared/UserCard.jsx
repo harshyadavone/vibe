@@ -12,6 +12,10 @@ const UserCard = ({ user }) => {
     setIsFollowing(user.followers.includes(currentUser._id));
   }, [user, currentUser._id]);
 
+  if (user._id === currentUser._id) {
+  return null;
+}
+
   return (
     <div className="flex items-center space-x-4">
       <Link to={`/profile/${user._id}`} className="flex-shrink-0">
