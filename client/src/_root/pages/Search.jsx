@@ -46,7 +46,7 @@ const SearchUser = () => {
 
   return (
     <div className="mx-auto w-full">
-      <div className="w-full  mx-auto mt-4 max-w-sm">
+      <div className="w-full p-4  mx-auto mt-4 max-w-sm">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <input
