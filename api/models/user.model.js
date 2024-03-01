@@ -45,6 +45,7 @@ const userSchema = new mongoose.Schema(
     socialLinks: {
       instagram: { type: String, trim: true },
       github: { type: String, trim: true },
+      twitter: { type: String, trim: true },
       // Add more social media platforms as needed
     },    
     createdAt: {

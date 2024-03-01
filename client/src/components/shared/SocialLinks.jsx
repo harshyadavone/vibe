@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios"; // make sure to install this package
 import { FaInstagram, FaGithub, FaTwitter } from "react-icons/fa"; // import the icons you need
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const SocialLinks = () => {
   const [links, setLinks] = useState({});
   const { id: userId } = useParams();
+  const navigate = useNavigate();
 
   const updateLink = async (platform, link) => {
     try {
@@ -35,7 +37,8 @@ const SocialLinks = () => {
           updateLink(platform, link)
         )
       );
-      console.log("Links updated successfully!");
+      toast.success("Links updated successfully!");
+      navigate(`/profile/${userId}`);
     } catch (error) {
       console.error("Error updating links:", error);
     }
@@ -46,7 +49,7 @@ const SocialLinks = () => {
       <div className="relative">
         <input
           className="input pl-10"
-          placeholder="Instagram"
+          placeholder="@instagram"
           value={links.instagram || ""}
           onChange={(e) => handleInputChange(e, "instagram")}
         />
@@ -55,7 +58,7 @@ const SocialLinks = () => {
       <div className="relative">
         <input
           className="input pl-10"
-          placeholder="GitHub"
+          placeholder="@github"
           value={links.github || ""}
           onChange={(e) => handleInputChange(e, "github")}
         />
@@ -63,8 +66,9 @@ const SocialLinks = () => {
       </div>
       <div className="relative">
         <input
+        id="twitter"
           className="input pl-10"
-          placeholder="Twitter"
+          placeholder="@twitter"
           value={links.twitter || ""}
           onChange={(e) => handleInputChange(e, "twitter")}
         />

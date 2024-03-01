@@ -102,7 +102,6 @@ const PostForm = ({ post, action }) => {
       },
     });
   };
-  
 
   const handleUploadImage = async (selectedFile) => {
     try {
@@ -170,8 +169,8 @@ const PostForm = ({ post, action }) => {
               onClick={() => document.getElementById("fileInput").click()} // Trigger file input click
             />
             <div className="pt-2">
-              <span className="font-semibold text-gray-500 btn btn-ghost text-center ">
-                click on the image to upload
+              <span className="text-gray-500 text-center text-sm font-semibold">
+                click on the image to upload (less than 2MB)
               </span>
             </div>
           </span>

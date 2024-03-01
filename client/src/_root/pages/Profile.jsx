@@ -12,6 +12,7 @@ import ProfileDropdown from "../../components/shared/ProfileDropdown";
 import ProfileStats from "../../components/shared/ProfieStats";
 import FollowButton from "../../components/shared/FollowButton";
 import { Navigate } from "react-router-dom";
+import OthersDropdown from "../../components/shared/OthersDropdown";
 
 const StatBlock = ({ value, label }) => (
   <div className="flex-center gap-2">
@@ -51,8 +52,7 @@ const Profile = () => {
   } = useInfiniteQuery(["userPosts", id], fetchPosts, {
     getNextPageParam: (lastPage) => lastPage.nextPage,
     staleTime: 60 * 1000,
-  },
-  );
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -162,7 +162,12 @@ const Profile = () => {
                 <ProfileDropdown userId={userData._id} />
               </div>
             ) : (
-              <button className="btn">Message</button>
+              <div className="">
+                <OthersDropdown
+                  userId={userData._id}
+                  socialLinks={userData.socialLinks}
+                />
+              </div>
             )}
           </div>
         </div>
