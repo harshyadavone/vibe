@@ -201,7 +201,7 @@ const PostDetails = () => {
                   onClick={() => setShowConfirmationModal(true)}
                   variant="ghost"
                   className={`post_details-delete-btn ${
-                    currentUser?._id !== post.ownerId && "hidden"
+                    currentUser?._id !== post.author._id && "hidden"
                   }`}
                   disabled={isDeleting}
                 >

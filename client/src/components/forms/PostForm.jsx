@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Compressor from "compressorjs";
 
 const PostForm = ({ post, action }) => {
   const [file, setFile] = useState(null);
@@ -84,14 +85,24 @@ const PostForm = ({ post, action }) => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-
     setFile(selectedFile);
     setFormData({ ...formData, file: selectedFile });
     setImagePlaceholderVisible(false);
-
-    // Trigger image upload
-    handleUploadImage(selectedFile);
+    compressImage(selectedFile);
   };
+
+  const compressImage = (imageFile) => {
+    new Compressor(imageFile, {
+      quality: 0.6, // Adjust this value to change the compression level
+      success: (compressedResult) => {
+        handleUploadImage(compressedResult);
+      },
+      error(err) {
+        console.log(err.message);
+      },
+    });
+  };
+  
 
   const handleUploadImage = async (selectedFile) => {
     try {
