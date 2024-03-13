@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { Search } from "lucide-react";
 import { useInfiniteQuery } from "react-query";
@@ -10,6 +11,7 @@ import UserCard from "../../components/shared/UserCard";
 const SearchUser = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
+  const navigate = useNavigate()
   const inputBorderColor =
     theme === "light" ? "border-gray-300" : "border-gray-700";
 
@@ -43,6 +45,10 @@ const SearchUser = () => {
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
+
+  if(!currentUser){
+    navigate('/continue-signin')
+  }
 
   return (
     <div className="mx-auto w-full">
