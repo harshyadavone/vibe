@@ -142,7 +142,7 @@ const Google = () => {
         </p>
         <Link to="/sign-in" className=" btn btn-wide btn-primary mt-7">
           {/* <LogIn className="inline-block w-6 h-6 mr-2" /> Login here */}
-          Login here
+          Continue with credentials
         </Link>
         <p className="mt-5 text-sm font-semibold tracking-tight">
           OR continue with
