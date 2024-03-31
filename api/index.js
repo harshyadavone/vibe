@@ -7,6 +7,7 @@ import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
 import commentRoutes from "./routes/comment.route.js";
 import path from "path";
+import job from "./utils/cron.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
+job.start();
 
 app.use(express.json());
 app.use(cookieParser());
