@@ -30,10 +30,6 @@ const Profile = () => {
   const [isFollowing, setIsFollowing] = useState(false); // Add this line
   const [userData, setUserData] = useState(null);
 
-  if (!currentUser) {
-    return <Navigate to="/continue-signin" />;
-  }
-
   const fetchPosts = async ({ pageParam = 1 }) => {
     const { data } = await axios.get(
       `/api/user/${id}/posts?page=${pageParam}&limit=6`

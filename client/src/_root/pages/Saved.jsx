@@ -4,7 +4,6 @@ import GridPostList from "../../components/shared/GridPostList";
 import { useSelector } from "react-redux";
 import Loader from "../../components/shared/Loader";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
 const fetchSavedPosts = async ({ pageParam = 1, userId }) => {
   const { data } = await axios.get(
@@ -16,9 +15,7 @@ const fetchSavedPosts = async ({ pageParam = 1, userId }) => {
 const Saved = () => {
   const { currentUser } = useSelector((state) => state.user);
 
-  if (!currentUser) {
-    return <Navigate to="/continue-signin" />;
-  }
+
 
   const {
     data,

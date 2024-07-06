@@ -46,9 +46,6 @@ const SearchUser = () => {
     setSearchTerm(event.target.value);
   };
 
-  if(!currentUser){
-    navigate('/continue-signin')
-  }
 
   return (
     <div className="mx-auto w-full">
