@@ -7,7 +7,7 @@ const AuthWrapper = () => {
   const { currentUser, isLoading } = useSelector((state) => state.user);
 
   if (isLoading) {
-    return <div><Loader></div>;
+    return <div><Loader/></div>;
   }
 
   if (!currentUser) {
